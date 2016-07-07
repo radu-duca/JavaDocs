@@ -8,6 +8,10 @@ import ro.teamnet.zth.api.annotations.Column;
 import ro.teamnet.zth.api.annotations.Id;
 import ro.teamnet.zth.api.annotations.Table;
 
+/*
+* Clasa contine metode ajutatoare pentru colectarea
+* informatiilor despre campuri si clase dinamic, la runtime
+*/
 public class EntityUtils {
 
     public static final String EMPTY_STRING = "";
@@ -16,22 +20,19 @@ public class EntityUtils {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     *
-     * @param entity
-     * @return
-     */
+    /*
+    * Returneaza numele tabelei asociate clasei entity
+    */
     public static String getTableName(Class entity) {
         Table tableAnnotation = (Table) entity.getAnnotation(Table.class);
         return EMPTY_STRING.equals(tableAnnotation.name()) ? entity.getClass().getSimpleName() : tableAnnotation.name();
     }
 
-    /**
-     *
-     * @param entity
-     * @return
-     */
-    public static List<ColumnInfo> getColumns(Class entity, boolean withJoins) {
+    /*
+    * Returneaza o lista (List<ColumnInfo>) cu
+    * informatii despre campurile clasei entity
+    */
+    public static List<ColumnInfo> getColumns(Class entity) {
         List<ColumnInfo> columns = new ArrayList<>();
         Field[] fields = entity.getDeclaredFields();
         for(Field field : fields) {
@@ -46,18 +47,15 @@ public class EntityUtils {
                 columnInfo.setDbName(id.name());
                 columnInfo.setId(true);
             }
-            if(withJoins) {
-               //ToDo
-            }
             columns.add(columnInfo);
         }
         return columns;
     }
 
-    public static List<ColumnInfo> getColumns(Class entity) {
-        return getColumns(entity, true);
-    }
-
+    /*
+    * Metoda primeste un obiect din baza de date (value),
+    * si il transforma intr-un obiect de tip wantedType
+    */
     public static Object castFromSqlType(Object value, Class wantedType) {
         if(value != null) {
             if(value instanceof BigDecimal) {
@@ -73,6 +71,10 @@ public class EntityUtils {
         return null;
     }
 
+    /*
+    * Returneaza o lista (List<Field>) ce contine campurile
+    * clasei clazz annotate cu annotarea annotation
+    */
     public static List<Field> getFieldsByAnnotations(Class clazz, Class annotation) {
         List<Field> fields = new ArrayList<>();
         Field[] declaredFields = clazz.getDeclaredFields();
@@ -82,18 +84,5 @@ public class EntityUtils {
             }
         }
         return fields;
-    }
-
-    public static Object getSqlValue(Object object) throws IllegalAccessException {
-        if(object == null) {
-            return null;
-        }
-        if(object.getClass().getAnnotation(Table.class) != null) {
-            Field idField = getFieldsByAnnotations(object.getClass(), Id.class).get(0);
-            idField.setAccessible(true);
-            return idField.get(object);
-        } else {
-            return object;
-        }
     }
 }

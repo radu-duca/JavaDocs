@@ -5,7 +5,10 @@ import ro.teamnet.zth.api.annotations.Id;
 import ro.teamnet.zth.api.annotations.Table;
 
 /**
- * Created by Diana.Diaconu on 4/21/2015.
+ * Entitate pe care o vom folosi in dezvoltarea aplicatiei,
+ * si pe care o mapam cu tabela departments din baza de date.
+ * Fiecarui camp din aceasta entitate ii corespunde o coloana
+ * din tabela departments
  */
 @Table(name = "departments")
 public class Department {

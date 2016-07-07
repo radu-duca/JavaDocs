@@ -1,7 +1,12 @@
 package ro.teamnet.zth.api.em;
 
 /**
- * Created by Diana.Diaconu on 4/21/2015.
+ * Clasa ce contine informatii despre coloanele tabelei asociata unei entitati/clase.
+ * Aceste informatii se refera la :
+ *      columnName - numele coloanei din tabela asociata entitatii/clasei
+ *      value - valoarea coloanei din tabela asociata entitatii/clasei
+ * Aceasta clasa va fi folosita pentru a seta CONDITIILE interogarilor select, update, insert si delete
+ * din clasa QueryBuilder
  */
 public class Condition {
     private String columnName;

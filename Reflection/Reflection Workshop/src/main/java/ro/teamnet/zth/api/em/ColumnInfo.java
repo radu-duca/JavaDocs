@@ -1,7 +1,15 @@
 package ro.teamnet.zth.api.em;
 
 /**
- * Created by Diana.Diaconu on 4/21/2015.
+ * Clasa ce contine informatii despre campurile unei entitati/clase.
+ * Aceste informatii se refera la :
+ *      columnName - numele campului
+ *      columnType - tipul campului
+ *      dbName - numele coloanei din tabela, asociata campului din entitate
+ *      idId - flag true/false (daca campul este id-ul entitatii sau nu)
+ *      value - valoarea campului
+ * Aceasta clasa va fi folosita pentru a crea interogarile select, update, insert si delete
+ * din clasa QueryBuilder
  */
 public class ColumnInfo {
 

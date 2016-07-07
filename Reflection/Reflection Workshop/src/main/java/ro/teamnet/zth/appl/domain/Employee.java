@@ -6,6 +6,12 @@ import ro.teamnet.zth.api.annotations.Column;
 import ro.teamnet.zth.api.annotations.Id;
 import ro.teamnet.zth.api.annotations.Table;
 
+/**
+ * Entitate pe care o vom folosi in dezvoltarea aplicatiei,
+ * si pe care o mapam cu tabela employees din baza de date.
+ * Fiecarui camp din aceasta entitate ii corespunde o coloana
+ * din tabela employees
+ */
 @Table(name = "employees")
 public class Employee {
 

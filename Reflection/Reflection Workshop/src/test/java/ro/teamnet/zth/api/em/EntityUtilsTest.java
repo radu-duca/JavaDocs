@@ -3,13 +3,8 @@ package ro.teamnet.zth.api.em;
 import org.junit.Test;
 import ro.teamnet.zth.api.annotations.Column;
 import ro.teamnet.zth.appl.domain.Department;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
-
 
 public class EntityUtilsTest {
 
@@ -21,7 +16,7 @@ public class EntityUtilsTest {
 
     @Test
     public void testGetColumnsMethod() {
-        List<ColumnInfo> columns = EntityUtils.getColumns(Department.class, false);
+        List<ColumnInfo> columns = EntityUtils.getColumns(Department.class);
         assertEquals(3, columns.size());
     }
 

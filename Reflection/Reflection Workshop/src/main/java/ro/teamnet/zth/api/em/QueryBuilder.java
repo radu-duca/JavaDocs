@@ -1,11 +1,19 @@
 package ro.teamnet.zth.api.em;
 
-import java.sql.*;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/*
+* Clasa ce contine metode ajutatoare crearii de interogari SQL
+* de tip select/insert/delete/update in mod dinamic. Pentru aceasta
+* sunt declarate si folosite campurile:
+ *      tableName - numele tabelei pe care se executa interogarile
+ *      queryColumns - coloanele implicate in interogari
+ *      queryType - tipul interogarii SQL: select/insert/update/delete
+ *      conditions - conditiile interogarii
+*/
 public class QueryBuilder {
 
     private Object tableName;
@@ -14,12 +22,8 @@ public class QueryBuilder {
     private List<Condition> conditions;
 
     /**
-     * Create QueryBuilder object
+     * Adauga o conditie la conditiile deja existente in interogare
      */
-    public QueryBuilder() {
-
-    }
-
     public QueryBuilder addCondition(Condition condition) {
         if (this.conditions == null){
             this.conditions = new ArrayList<>();
@@ -28,18 +32,13 @@ public class QueryBuilder {
         return this;
     }
 
-    /**
-     * Set the table name for query
-     * @param tableName - table name
-     */
     public QueryBuilder setTableName(Object tableName) {
         this.tableName = tableName;
         return this;
     }
 
     /**
-     *
-     * @param queryColumns
+     * Adauga o coloana la coloanele deja implicate in interogare
      */
     public QueryBuilder addQueryColumns(List<ColumnInfo> queryColumns) {
         if (this.queryColumns == null){
@@ -49,19 +48,15 @@ public class QueryBuilder {
         return this;
     }
 
-    /**
-     *
-     * @param queryType
-     */
     public QueryBuilder setQueryType(QueryType queryType) {
         this.queryType = queryType;
         return this;
     }
 
-    /**
-     * Create a SQL query
-     * @return - a valid SQL query
-     */
+    /*
+    * Metoda ce creaza interogari de tip select/update/delete/insert,
+    * in functie de valoarea lui queryType
+    */
     public String createQuery() {
         if (QueryType.SELECT.equals(this.queryType)){
             return createSelectQuery();
@@ -75,6 +70,10 @@ public class QueryBuilder {
         return null;
     }
 
+    /*
+    * Metoda ce creaza o interogare de tip select, folosind
+    * coloanele din queryColumns si conditiile din conditions
+    */
     private String createSelectQuery() {
         StringBuilder sql = new StringBuilder();
         sql.append("select ");
@@ -99,6 +98,10 @@ public class QueryBuilder {
         return sql.toString();
     }
 
+    /*
+    * Metoda ce creaza o interogare de tip delete, folosind
+    * conditiile din conditions
+    */
     private String createDeleteQuery() {
         StringBuilder sql = new StringBuilder();
         sql.append("delete from ").append(tableName);
@@ -112,6 +115,10 @@ public class QueryBuilder {
         return sql.toString();
     }
 
+    /*
+    * Metoda ce creaza o interogare de tip update, folosind
+    * coloanele din queryColumns si conditiile din conditions
+    */
     private String createUpdateQuery() {
         StringBuilder sql = new StringBuilder();
         sql.append("update ").append(tableName).append(" set ");
@@ -137,6 +144,10 @@ public class QueryBuilder {
         return sql.toString();
     }
 
+    /*
+    * Metoda ce creaza o interogare de tip insert, folosind
+    * coloanele si valorile acestora din queryColumns
+    */
     private String createInsertQuery() {
         StringBuilder sql = new StringBuilder();
         sql.append("insert into ").append(tableName).append(" (");
@@ -163,6 +174,10 @@ public class QueryBuilder {
         return sql.toString();
     }
 
+    /*
+    * Metoda transforma obiectul value, daca este de tip Date/String,
+    * intr-un format potrivit standardului SQL
+    */
     private String getValueForQuery(Object value) {
         if (value == null){
             return null;
@@ -170,8 +185,8 @@ public class QueryBuilder {
         if (value instanceof String){
             return "'" + value + "'";
         } else if (value instanceof java.sql.Date){
-            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-            return "STR_TO_DATE('" + dateFormat.format((Date) value) + "', '%m/%d/%Y')";
+            DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+            return "TO_DATE('"+dateFormat.format((Date)value)+"','mm-dd-YYYY'";
         } else {
             return value.toString();
         }

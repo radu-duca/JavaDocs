@@ -1,13 +1,13 @@
 package ro.teamnet.zth.api.annotations;
 
-import ro.teamnet.zth.api.em.EntityUtils;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+/*
+* Vom folosi aceasta annotare pentru a marca entitatile si campurile acestora
+* */
 @Target(FIELD)
 @Retention(RUNTIME)
 public @interface Id {
