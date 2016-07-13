@@ -11,7 +11,6 @@ public class LocationDao {
     EntityManager entityManager = new EntityManagerImpl();
 
     /**
-     *
      * @param location
      * @return location object
      */
@@ -20,7 +19,6 @@ public class LocationDao {
     }
 
     /**
-     *
      * @param location
      * @return location object
      */
@@ -29,7 +27,6 @@ public class LocationDao {
     }
 
     /**
-     *
      * @param location
      */
     public void deleteLocation(Location location) {
@@ -37,7 +34,6 @@ public class LocationDao {
     }
 
     /**
-     *
      * @return a list of locations
      */
     public List<Location> getAllLocations() {
@@ -46,11 +42,11 @@ public class LocationDao {
     }
 
     /**
-     *
      * @param id
      * @return location object
      */
     public Location getLocationById(Integer id) {
+
         return entityManager.findById(Location.class, id);
     }
 

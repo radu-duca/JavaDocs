@@ -29,6 +29,18 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>Info</servlet-name>
+        <servlet-class>ro.teamnet.zth.web.InfoHttpServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>Info</servlet-name>
+        <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+
+
     <!--Welcome file-->
     <welcome-file-list>
         <welcome-file>/index.html</welcome-file>

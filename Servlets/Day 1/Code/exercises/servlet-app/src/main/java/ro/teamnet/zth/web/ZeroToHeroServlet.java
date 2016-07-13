@@ -8,10 +8,10 @@ import java.io.IOException;
 
 
 public class ZeroToHeroServlet extends HttpServlet {
-    private String handleRequest(HttpServletRequest req){
+    private String handleRequest(HttpServletRequest req) {
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-        String response="Hello <b>["+ firstName +"] ["+lastName+"]</b>! Enjoy Zero To Hero!!!";
+        String response = "Hello <b>[" + firstName + "] [" + lastName + "]</b>! Enjoy Zero To Hero!!!";
         return response;
     }
 
