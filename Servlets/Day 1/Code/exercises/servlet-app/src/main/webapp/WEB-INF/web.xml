@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
 		                     http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
-    <display-name>Web Application</display-name>
+    <!--<display-name>Web Application</display-name>-->
 
     <!--HelloWorld Servlet-->
     <servlet>
@@ -12,31 +12,30 @@
         <servlet-class>ro.teamnet.zth.web.HelloWorldServlet</servlet-class>
     </servlet>
 
+
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
-    <!--zerotohero-->
+
     <servlet>
-        <servlet-name>ZeroToHeroServlet</servlet-name>
+        <servlet-name>ZeroToHero</servlet-name>
         <servlet-class>ro.teamnet.zth.web.ZeroToHeroServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ZeroToHeroServlet</servlet-name>
+        <servlet-name>ZeroToHero</servlet-name>
         <url-pattern>/zerotohero</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
-        <servlet-name>Info</servlet-name>
+        <servlet-name>InfoHttp</servlet-name>
         <servlet-class>ro.teamnet.zth.web.InfoHttpServlet</servlet-class>
     </servlet>
 
-
     <servlet-mapping>
-        <servlet-name>Info</servlet-name>
+        <servlet-name>InfoHttp</servlet-name>
         <url-pattern>/info</url-pattern>
     </servlet-mapping>
 
