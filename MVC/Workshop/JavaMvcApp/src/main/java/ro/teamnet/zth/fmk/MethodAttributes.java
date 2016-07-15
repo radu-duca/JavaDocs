@@ -8,6 +8,8 @@ public class MethodAttributes {
     String controllerClass;
     String methodName;
     String methodType;
+    private Class<?>[] parameterTypes;
+
 
     public String getControllerClass() {
         return controllerClass;
@@ -73,4 +75,12 @@ public class MethodAttributes {
                 ", methodType='" + methodType + '\'' +
                 '}';
     }
+
+    public void setParameterTypes(Class<?>[] parameterTypes) {
+        this.parameterTypes = parameterTypes;
+    }
+    public Class<?>[] getParameterTypes() {
+        return this.parameterTypes;
+    }
+
 }

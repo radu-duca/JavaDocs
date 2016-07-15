@@ -191,4 +191,21 @@ public class Employee {
         result = 31 * result + (departmentId != null ? departmentId.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", hireDate=" + hireDate +
+                ", jobId='" + jobId + '\'' +
+                ", salary=" + salary +
+                ", commissionPct=" + commissionPct +
+                ", managerId=" + managerId +
+                ", departmentId=" + departmentId +
+                '}';
+    }
 }
