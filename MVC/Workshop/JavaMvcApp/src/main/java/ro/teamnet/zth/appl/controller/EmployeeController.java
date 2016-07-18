@@ -5,7 +5,7 @@ import ro.teamnet.zth.api.annotations.MyRequestMethod;
 import ro.teamnet.zth.api.annotations.MyRequestParam;
 import ro.teamnet.zth.appl.domain.Employee;
 import ro.teamnet.zth.appl.service.EmployeeService;
-import ro.teamnet.zth.appl.service.EmployeeServiceImpl;
+import ro.teamnet.zth.appl.service.impl.EmployeeServiceImpl;
 
 import java.util.List;
 

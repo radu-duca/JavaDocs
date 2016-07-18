@@ -5,15 +5,10 @@ import java.lang.annotation.*;
 /**
  * Created by user on 7/14/2016.
  */
-
-
-@Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface MyRequestMethod {
-    String methodType() default "GET";
     String urlPath();
-
-
-
+    String methodType() default "GET";
 }

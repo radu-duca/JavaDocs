@@ -30,7 +30,7 @@ public class EntitiyManagerImplTest {
     @Test
     public void bTestFindAll() {
         List<Department> deps = entityManager.findAll(Department.class);
-        assertEquals(deps.size(), 27);
+        assertEquals(deps.size(), 28);
     }
 
     @Test
